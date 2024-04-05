@@ -1,4 +1,4 @@
-# Salty Chat for [FiveM](https://fivem.net/)
+# Salty Chat in LUA for [FiveM](https://fivem.net/)
 
 An example implementation of Salty Chat for [FiveM](https://fivem.net/) OneSync and OneSync Infinity.  
 

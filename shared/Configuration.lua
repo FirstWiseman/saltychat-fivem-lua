@@ -65,7 +65,7 @@ Configuration = {
   ---@type boolean
   VariablePhoneDistortion = true,
   ---@type string
-  NamePattern = "[{serverid}] Voyage-{playername}",
+  NamePattern = "[{serverid}] Server-{playername}",
   ---@type boolean
   RequestTalkStates = true,
   ---@type boolean

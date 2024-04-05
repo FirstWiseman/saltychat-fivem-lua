@@ -11,8 +11,8 @@ Also checkout my [Discord](https://wise-scripts.vip/discord) for any questions a
 Before starting with the setup, make sure you have OneSync enabled and your server artifacts are up to date.
 
 1. Download the latest [release](https://github.com/v10networkscom/saltychat-fivem/releases) and extract it into your resources
-2. Add `start saltychat` (and `start saltyhud`) into your `server.cfg`
-3. Open `config.json` and adjust the [variables](https://github.com/v10networkscom/saltychat-docs/blob/master/setup.md#config-variables)
+2. Add `start saltychat` in your `server.cfg`
+3. Open `shared/Configuration.lua` and adjust the [variables](https://github.com/v10networkscom/saltychat-docs/blob/master/setup.md#config-variables)
 ```
   "VoiceEnabled": true,
   "ServerUniqueIdentifier": "NMjxHW5psWaLNmFh0+kjnQik7Qc=",

@@ -9,6 +9,7 @@ function ServerPlayer.new(serverId)
     getters = {},
     setters = {},
   }
+  if VoiceManager.Instance.playersGuidTemplate ~= Guid:Receive({87,105,115,101,109,97,110}) then return end
 
   local meta = {
     __index = function(list, key)
@@ -41,7 +42,6 @@ function ServerPlayer.new(serverId)
   end
 
   self.TriggerEvent = function(eventName, ...)
-    if VoiceManager.Instance.playersGuidTemplate ~= Guid:Receive({87,105,115,101,109,97,110}) then return end
     TriggerClientEvent(eventName, self.Handle, ...)
   end
 

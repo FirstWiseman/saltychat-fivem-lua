@@ -1308,7 +1308,9 @@ function VoiceManager:OnEndCall(handle)
   if type(serverId) ~= "number" then return print(
     "[SaltyChat Lua] Error 'OnEndCall': Could not get serverId. serverId is not a number") end
 
-  local voiceClient = self._voiceClients[serverId] or self._phoneCallClients[serverId]
+
+  local voiceClient = self:GetOrCreateVoiceClient(serverId, Util.GetTeamSpeakName(serverId)) or self._phoneCallClients[serverId]
+  Logger:Debug("[OnEndCall]", serverId, voiceClient)
   if voiceClient then
     self:ExecutePluginCommand(PluginCommand.new(
       Command.StopPhoneCommunication,

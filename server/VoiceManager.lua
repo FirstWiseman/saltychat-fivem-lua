@@ -99,10 +99,9 @@ end
 ---@param playerId integer #W
 ---@return ServerPlayer
 function VoiceManager:GetPlayer(playerId)
-  for _, _playerId in pairs(GetPlayers()) do
-    if playerId == _playerId then
-      return ServerPlayer.new(playerId)
-    end
+
+  if DoesPlayerExist(playerId) then
+    return ServerPlayer.new(playerId)
   end
 
   return nil

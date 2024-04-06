@@ -1232,6 +1232,7 @@ RegisterNetEvent(Event.SaltyChat_EstablishCall,
 ---@param teamSpeakName string
 ---@param position table
 function VoiceManager:OnEstablishCall(handle, teamSpeakName, position)
+  Logger:Debug("[OnEstablishCall]", handle, teamSpeakName)
   self:OnEstablishCallRelayed(handle, teamSpeakName, position, true, {})
 end
 

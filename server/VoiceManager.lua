@@ -240,8 +240,12 @@ end
 ---@param callerNetId integer
 ---@param partnerNetId integer
 function VoiceManager:EndCall(callerNetId, partnerNetId)
+  ---@type ServerPlayer
   local callerPlayer = self:GetPlayer(callerNetId)
+  ---@type ServerPlayer
   local partnerPlayer = self:GetPlayer(partnerNetId)
+
+  Logger:Debug("[EndCall]", callerNetId, callerPlayer ~= nil, partnerNetId, partnerPlayer ~= nil)
 
   if callerPlayer then
     callerPlayer.TriggerEvent(Event.SaltyChat_EndCall, partnerPlayer.Handle) 

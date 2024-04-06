@@ -100,7 +100,7 @@ end
 ---@return ServerPlayer
 function VoiceManager:GetPlayer(playerId)
 
-  if DoesPlayerExist(playerId) then
+  if playerId ~= nil and DoesPlayerExist(playerId) then
     return ServerPlayer.new(playerId)
   end
 

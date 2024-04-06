@@ -1,11 +1,13 @@
 # Salty Chat in LUA for [FiveM](https://fivem.net/)
 
-An example implementation of Salty Chat for [FiveM](https://fivem.net/) OneSync and OneSync Infinity.  
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FFirstWiseman%2Fsaltychat-fivem-lua&count_bg=%23E50000&title_bg=%23030303&icon=buzzfeed.svg&icon_color=%23E7E7E7&title=Lua+Lovers&edge_flat=false)](https://hits.seeyoufarm.com)
 
-You can report bugs or make sugguestions via issues, or contribute via pull requests - we appreciate any contribution.  
+An example implementation of Salty Chat for [FiveM](https://fivem.net/) OneSync and OneSync Infinity.  
+  
 Join the [Discord](https://gaming.v10networks.com/Discord) of @v10networkscom and start with [Salty Chat](https://gaming.v10networks.com/SaltyChat)!
 
 Also checkout my [Discord](https://wise-scripts.vip/discord) for any questions about the Saltychat Lua Version or if you have found any Bugs.
+You can report bugs or make sugguestions via issues, or contribute via pull requests - we appreciate any contribution.
 
 # Setup Steps
 Before starting with the setup, make sure you have OneSync enabled and your server artifacts are up to date.
@@ -22,7 +24,7 @@ Before starting with the setup, make sure you have OneSync enabled and your serv
   "IngameChannelPassword": "5V88FWWME615",
   "SwissChannelIds": [ 61, 62 ],
 ```
-4. (Optional) Change keybinds in `config.json`, see [default values](https://github.com/v10networkscom/saltychat-fivem#keybinds) below
+4. (Optional) Change keybinds in `shared/Configuration.lua`, see [default values](https://github.com/v10networkscom/saltychat-fivem#keybinds) below
 5. (Optional) Look into our recommended [TeamSpeak server settings](https://github.com/v10networkscom/saltychat-docs#teamspeak-server-settings)
 
 **Attantion**: CFX team implemented a NUI blacklist and blocked local (`127.0.0.1` and `localhost`) WebSocket connections.

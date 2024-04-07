@@ -61,6 +61,7 @@ function VoiceClient.new(player, teamSpeakName, voiceRange, isAlive)
   end
 
   self.Player.State[State.SaltyChat_TeamSpeakName] = teamSpeakName
+
   return self
 end
 

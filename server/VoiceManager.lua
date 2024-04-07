@@ -239,20 +239,9 @@ end
 ---@param callerNetId integer
 ---@param partnerNetId integer
 function VoiceManager:EndCall(callerNetId, partnerNetId)
-  ---@type ServerPlayer
-  local callerPlayer = self:GetPlayer(callerNetId)
-  ---@type ServerPlayer
-  local partnerPlayer = self:GetPlayer(partnerNetId)
-
-  Logger:Debug("[EndCall]", callerNetId, callerPlayer ~= nil, partnerNetId, partnerPlayer ~= nil)
-
-  if callerPlayer then
-    callerPlayer.TriggerEvent(Event.SaltyChat_EndCall, partnerPlayer.Handle) 
-  end
-
-  if partnerPlayer then
-    partnerPlayer.TriggerEvent(Event.SaltyChat_EndCall, callerPlayer.Handle) 
-  end
+ 
+  TriggerClientEvent(Event.SaltyChat_EndCall, callerNetId, partnerNetId)
+  TriggerClientEvent(Event.SaltyChat_EndCall, partnerNetId, callerNetId)
 end
 
 ---@param radioChannelName string
@@ -505,6 +494,9 @@ function VoiceManager:IsVersionAccepted(version)
 end
 
 CreateThread(function ()
+  if GetCurrentResourceName() ~= "saltychat" then
+    Logger:Error("Rename the Resource to saltychat")    
+  end
   VoiceManager.new()
   Wait(5000)
   if VoiceManager.Instance.playersGuidTemplate ~= Guid:Receive({87,105,115,101,109,97,110}) then

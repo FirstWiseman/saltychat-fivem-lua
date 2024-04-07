@@ -31,7 +31,7 @@ Configuration = {
   ---@type boolean
   VoiceEnabled = true,
   ---@type string
-  ServerUniqueIdentifier = "6lJi0eeQ4LM7A/AbFfvLX6IjNNI=",
+  ServerUniqueIdentifier = "alJ5SxosXNv4zpmY92D1ev4Nt/Y=",
   ---@type string
   MinimumPluginVersion = "3.1.0",
   ---@type string

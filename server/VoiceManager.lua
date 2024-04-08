@@ -239,7 +239,6 @@ end
 ---@param callerNetId integer
 ---@param partnerNetId integer
 function VoiceManager:EndCall(callerNetId, partnerNetId)
- 
   TriggerClientEvent(Event.SaltyChat_EndCall, callerNetId, partnerNetId)
   TriggerClientEvent(Event.SaltyChat_EndCall, partnerNetId, callerNetId)
 end

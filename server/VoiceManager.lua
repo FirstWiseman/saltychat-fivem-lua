@@ -239,6 +239,11 @@ end
 ---@param callerNetId integer
 ---@param partnerNetId integer
 function VoiceManager:EndCall(callerNetId, partnerNetId)
+  if callerNetId == nil or partnerNetId == nil then
+    Logger:Error("[EndCall]", callerNetId == nil and "callerNetId is 'nil'" or "", partnerNetId == nil and "partnerNetId is 'nil'")
+    return
+  end
+
   TriggerClientEvent(Event.SaltyChat_EndCall, callerNetId, partnerNetId)
   TriggerClientEvent(Event.SaltyChat_EndCall, partnerNetId, callerNetId)
 end

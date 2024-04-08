@@ -81,7 +81,7 @@ isTalking | `bool` | `true` when player starts talking, `false` when the player 
 Parameter | Type | Description
 ------------ | ------------- | -------------
 voiceRange | `float` | current voice range
-index | `int` | index of the current voice range (starts at `0`)
+index | `int` | index of the current voice range (starts at `1`)
 availableVoiceRanges | `int` | count of available voice ranges
 
 ### SaltyChat_MicStateChanged

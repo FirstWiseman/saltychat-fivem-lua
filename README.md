@@ -56,7 +56,7 @@ RequestRadioTrafficStates | `bool` | Enables/disables [RadioTrafficState's](http
 Below are the default keybinds which will be written to your client config (`%appdata%\CitizenFX\fivem.cfg`).  
 Changing the default values wont change the values saved to your config.  
 Keybinds can be changed in game through the keybinding options of GTA V (`ESC` > `Settings` > `Key Bindings` > `FiveM`).
-Default keybinds can be changed in `config.json`, see [FiveM docs](https://docs.fivem.net/docs/game-references/input-mapper-parameter-ids/keyboard/) for possible values.
+Default keybinds can be changed in `shared/Configuration.lua`, see [FiveM docs](https://docs.fivem.net/docs/game-references/input-mapper-parameter-ids/keyboard/) for possible values.
 
 Variable | Description | Default
 :---: | :---: | :---:

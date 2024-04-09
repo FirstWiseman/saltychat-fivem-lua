@@ -1,4 +1,4 @@
-# Salty Chat in LUA for [FiveM](https://fivem.net/)
+# Salty Chat in Lua for [FiveM](https://fivem.net/)
 
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FFirstWiseman%2Fsaltychat-fivem-lua&count_bg=%239B0000&title_bg=%23202020&icon=lua.svg&icon_color=%23E7E7E7&title=Lua+Lovers&edge_flat=false)](https://hits.seeyoufarm.com)
 
@@ -12,7 +12,7 @@ You can report bugs or make sugguestions via issues, or contribute via pull requ
 # Setup Steps
 Before starting with the setup, make sure you have OneSync enabled and your server artifacts are up to date.
 
-1. Download the latest [release](https://github.com/v10networkscom/saltychat-fivem/releases) and extract it into your resources
+1. Download the latest [release](https://github.com/FirstWiseman/saltychat-fivem-lua/releases) and extract it into your resources
 2. Add `start saltychat` in your `server.cfg`
 3. Open `shared/Configuration.lua` and adjust the [variables](https://github.com/v10networkscom/saltychat-docs/blob/master/setup.md#config-variables)
 ```

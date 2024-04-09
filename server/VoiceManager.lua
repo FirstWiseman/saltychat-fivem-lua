@@ -628,6 +628,8 @@ RegisterNetEvent(Event.SaltyChat_SetRadioSpeaker, function (isRadioSpeakerEnable
 end)
 --#endregion
 
+-- Register Commands if Debug is enabled, else return here
+if not Configuration.Debug then return end
 --#region Commands
 RegisterCommand("setalive", function (source, args, raw)
   local player = ServerPlayer.new(source)

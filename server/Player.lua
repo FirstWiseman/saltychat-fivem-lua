@@ -46,7 +46,8 @@ function ServerPlayer.new(serverId)
   end
 
   self.SendChatMessage = function(msg)
-    TriggerClientEvent("wise_notify", self.Handle, "info", "Info", msg, 5000)
+    -- TriggerClientEvent("wise_notify", self.Handle, "info", "Info", msg, 5000)
+    Extension.SendChatMessage(self, GetPlayerName(self.Handle), msg)
   end
 
   self.Drop = function(reason)

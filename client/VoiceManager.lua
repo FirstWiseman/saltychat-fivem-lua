@@ -318,7 +318,7 @@ function VoiceManager:VoiceRangeChangeHandler(bagName, key, value, reserved, rep
   end
 
   ---@type VoiceClient
-  local voiceClient = self._voiceClients[serverId]
+  local voiceClient = self._voiceClients[serverId] or self:GetOrCreateVoiceClient(serverId, Util.GetTeamSpeakName(serverId))
   if voiceClient == nil then
     return
   end

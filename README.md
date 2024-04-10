@@ -24,7 +24,7 @@ Before starting with the setup, make sure you have OneSync enabled and your serv
   "IngameChannelPassword": "5V88FWWME615",
   "SwissChannelIds": [ 61, 62 ],
 ```
-4. (Optional) Change keybinds in `shared/Configuration.lua`, see [default values](https://github.com/v10networkscom/saltychat-fivem#keybinds) below
+4. (Optional) Change keybinds in `shared/Configuration.lua`, see [default values](https://github.com/FirstWiseman/saltychat-fivem-lua#keybinds) below
 5. (Optional) Look into our recommended [TeamSpeak server settings](https://github.com/v10networkscom/saltychat-docs#teamspeak-server-settings)
 
 **Attantion**: CFX team implemented a NUI blacklist and blocked local (`127.0.0.1` and `localhost`) WebSocket connections.

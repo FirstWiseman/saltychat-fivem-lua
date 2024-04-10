@@ -516,10 +516,11 @@ RegisterNetEvent("onResourceStart", function (resourceName)
 
   local oneSyncState = GetConvar("onesync", "off")
 
-  if oneSyncState == "on" or oneSyncState == "legacy" then
+  if oneSyncState == "on" then
     -- break
-  elseif oneSyncState == "off" then
+  elseif oneSyncState == "off" or oneSyncState == "legacy" then
     Configuration.VoiceEnabled = false
+    Logger:Error("OneSync has to be activated (not Legacy)")
   end
 end)
 

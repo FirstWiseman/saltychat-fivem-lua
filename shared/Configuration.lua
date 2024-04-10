@@ -27,7 +27,7 @@
 
 Configuration = {
   ---@type boolean
-  Debug = false,
+  Debug = true,
   ---@type boolean
   VoiceEnabled = true,
   ---@type string

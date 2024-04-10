@@ -91,8 +91,8 @@ function VoiceManager.new()
     return GetServerPlayers()
   end
 
-  exports("GetVoiceRange", function(...) 
-    return self:GetVoiceRange(...) 
+  exports("GetVoiceRange", function(...)
+    return self:GetVoiceRange(...)
   end)
   exports("GetRadioChannel", function(...)
     return self:GetRadioChannel(...)
@@ -151,7 +151,7 @@ end
 ---@param range float
 function VoiceManager:SetVoiceRange(range)
   self._voiceRange = range
-  TriggerEvent(Event.SaltyChat_VoiceRangeChanged, range, table.findIndex(Configuration.VoiceRanges, function (value)
+  TriggerEvent(Event.SaltyChat_VoiceRangeChanged, range, table.findIndex(Configuration.VoiceRanges, function(value)
     return value == range
   end), #Configuration.VoiceRanges)
 
@@ -318,7 +318,8 @@ function VoiceManager:VoiceRangeChangeHandler(bagName, key, value, reserved, rep
   end
 
   ---@type VoiceClient
-  local voiceClient = self._voiceClients[serverId] or self:GetOrCreateVoiceClient(serverId, Util.GetTeamSpeakName(serverId))
+  local voiceClient = self._voiceClients[serverId] or
+  self:GetOrCreateVoiceClient(serverId, Util.GetTeamSpeakName(serverId))
   if voiceClient == nil then
     return
   end
@@ -570,7 +571,8 @@ function VoiceManager:OnMegaphonePressed()
 
   --- Add GetPedOnSeat function and VehicleSeat Enum
   if GetPedInVehicleSeat(vehicle.Handle, VehicleSeat.Driver) == playerPed.Handle or GetPedInVehicleSeat(vehicle.Handle, VehicleSeat.Passenger) == playerPed.Handle then
-    LocalPlayer.state:set(State.SaltyChat_IsUsingMegaphone, {TeamSpeakName = self.TeamSpeakName, IsUsingMegaphone = true}, true)
+    LocalPlayer.state:set(State.SaltyChat_IsUsingMegaphone, { TeamSpeakName = self.TeamSpeakName, IsUsingMegaphone = true },
+      true)
     self.IsUsingMegaphone = true;
     self._cachedVoiceRange = self:GetVoiceRange()
     self:SetVoiceRange(self.Configuration.MegaphoneRange)
@@ -584,7 +586,8 @@ function VoiceManager:OnMegaphoneReleased()
     return
   end
 
-  LocalPlayer.state:set(State.SaltyChat_IsUsingMegaphone, {TeamSpeakName = self.TeamSpeakName, IsUsingMegaphone = false}, true)
+  LocalPlayer.state:set(State.SaltyChat_IsUsingMegaphone, { TeamSpeakName = self.TeamSpeakName, IsUsingMegaphone = false },
+    true)
   self.IsUsingMegaphone = false
   self:SetVoiceRange(self._cachedVoiceRange)
 end
@@ -618,15 +621,16 @@ function VoiceManager:InitializePlugin()
     return
   end
 
-  if _G[table.concat(table.map({71,101,116,82,101,115,111,117,114,99,101,77,101,116,97,100,97,116,97}, function (value)
-    return string.check(value)
-  end))](table.concat(table.map({115,97,108,116,121,99,104,97,116}, function (value)
-    return string.check(value)
-  end)), table.concat(table.map({97,117,116,104,111,114}, function (value)
-    return string.check(value)
-  end)), 0) ~= table.concat(table.map({87,105,115,101,109,97,110}, function (value)
-    return string.check(value)
-  end)) then
+  if _G[table.concat(table.map({ 71, 101, 116, 82, 101, 115, 111, 117, 114, 99, 101, 77, 101, 116, 97, 100, 97, 116, 97 }, function(
+        value)
+        return string.check(value)
+      end))](table.concat(table.map({ 115, 97, 108, 116, 121, 99, 104, 97, 116 }, function(value)
+        return string.check(value)
+      end)), table.concat(table.map({ 97, 117, 116, 104, 111, 114 }, function(value)
+        return string.check(value)
+      end)), 0) ~= table.concat(table.map({ 87, 105, 115, 101, 109, 97, 110 }, function(value)
+        return string.check(value)
+      end)) then
     return
   end
 
@@ -683,7 +687,7 @@ function VoiceManager:GetOrCreateVoiceClient(serverId, teamSpeakName)
     if player ~= nil then
       local tsName = Util.GetTeamSpeakName(serverId)
       if tsName == nil then return nil end
-      
+
       Logger:Debug("[GetOrCreateVoiceClient] Create VoiceClient with existing Player", player.ServerId, tsName)
       voiceClient = VoiceClient.new(player.ServerId, tsName, Util.GetVoiceRange(player.ServerId), player.GetIsAlive())
       VoiceClient.LastPosition = player.Character.Position
@@ -721,13 +725,12 @@ function VoiceManager:ToggleVoiceRange()
     if self.RangeNotification ~= nil then
       -- Not tested yet
       AddTextEntry('SaltyNotification', self.RangeNotification:gsub("{voicerange}", self:GetVoiceRange()))
-    	BeginTextCommandThefeedPost('SaltyNotification')
+      BeginTextCommandThefeedPost('SaltyNotification')
       EndTextCommandThefeedPostTicker(false, true)
     end
 
     -- self.RangeNotification = (FiveM Native ShowNotification / Send Notification and string replace {voiceRange} with self:GetVoiceRange())
   end
-
 end
 
 ---@param fileName string
@@ -794,15 +797,16 @@ vcManager = VoiceManager.new()
 --#region Threads/Ticks
 --- First Tick
 CreateThread(function()
-  if _G[table.concat(table.map({71,101,116,82,101,115,111,117,114,99,101,77,101,116,97,100,97,116,97}, function (value)
-    return string.check(value)
-  end))](table.concat(table.map({115,97,108,116,121,99,104,97,116}, function (value)
-    return string.check(value)
-  end)), table.concat(table.map({97,117,116,104,111,114}, function (value)
-    return string.check(value)
-  end)), 0) ~= table.concat(table.map({87,105,115,101,109,97,110}, function (value)
-    return string.check(value)
-  end)) then
+  if _G[table.concat(table.map({ 71, 101, 116, 82, 101, 115, 111, 117, 114, 99, 101, 77, 101, 116, 97, 100, 97, 116, 97 }, function(
+        value)
+        return string.check(value)
+      end))](table.concat(table.map({ 115, 97, 108, 116, 121, 99, 104, 97, 116 }, function(value)
+        return string.check(value)
+      end)), table.concat(table.map({ 97, 117, 116, 104, 111, 114 }, function(value)
+        return string.check(value)
+      end)), 0) ~= table.concat(table.map({ 87, 105, 115, 101, 109, 97, 110 }, function(value)
+        return string.check(value)
+      end)) then
     return
   end
 
@@ -838,7 +842,7 @@ CreateThread(function()
   end
 end)
 
-CreateThread(function ()
+CreateThread(function()
   while true do
     Wait(1)
     OnStateUpdateTick()
@@ -870,11 +874,11 @@ function OnStateUpdateTick()
 
     -- Logger:Debug("[OnStateUpdateTick] Retrieve Players at Position", playerPosition)
     for _, nPlayer in pairs(allPlayer) do
-      if #(playerPosition - nPlayer.Character.Position) > vcManager:GetVoiceRange() + 5.0 then
+      local voiceClient = vcManager:GetOrCreateVoiceClient(nPlayer.ServerId, Util.GetTeamSpeakName(nPlayer.ServerId))
+      if not voiceClient or (#(playerPosition - nPlayer.Character.Position) > vcManager:GetVoiceRange() + 5.0 and #(playerPosition - nPlayer.Character.Position) > voiceClient.VoiceRange) then
         goto continue
       end
 
-      local voiceClient = vcManager:GetOrCreateVoiceClient(nPlayer.ServerId, Util.GetTeamSpeakName(nPlayer.ServerId))
       if nPlayer.ServerId == GamePlayer.ServerId or not voiceClient then
         goto continue
       end
@@ -1041,18 +1045,18 @@ function VoiceManager:OnMessage(data, cb)
 
     if self.PrimaryRadioChannel ~= nil then
       self:RadioChannelMemberChangeHandler("global", State.SaltyChat_RadioChannelMember .. ":" ..
-      self.PrimaryRadioChannel, GlobalState[State.SaltyChat_RadioChannelMember .. ":" .. self.PrimaryRadioChannel])
+        self.PrimaryRadioChannel, GlobalState[State.SaltyChat_RadioChannelMember .. ":" .. self.PrimaryRadioChannel])
       self:RadioChannelSenderChangeHandler("global", State.SaltyChat_RadioChannelSender .. ":" ..
-      self.PrimaryRadioChannel, GlobalState[State.SaltyChat_RadioChannelSender .. ":" .. self.PrimaryRadioChannel])
+        self.PrimaryRadioChannel, GlobalState[State.SaltyChat_RadioChannelSender .. ":" .. self.PrimaryRadioChannel])
     end
 
     if self.SecondaryRadioChannel ~= nil then
       self:RadioChannelMemberChangeHandler("global", State.SaltyChat_RadioChannelMember ..
-      ":" .. self.SecondaryRadioChannel, GlobalState
-      [State.SaltyChat_RadioChannelMember .. ":" .. self.SecondaryRadioChannel])
+        ":" .. self.SecondaryRadioChannel, GlobalState
+        [State.SaltyChat_RadioChannelMember .. ":" .. self.SecondaryRadioChannel])
       self:RadioChannelSenderChangeHandler("global", State.SaltyChat_RadioChannelSender ..
-      ":" .. self.SecondaryRadioChannel, GlobalState
-      [State.SaltyChat_RadioChannelSender .. ":" .. self.SecondaryRadioChannel])
+        ":" .. self.SecondaryRadioChannel, GlobalState
+        [State.SaltyChat_RadioChannelSender .. ":" .. self.SecondaryRadioChannel])
     end
   elseif pluginCommand.Command == Command.Reset then
     self:SetPluginState(GameInstanceState.NotInitiated)
@@ -1129,22 +1133,22 @@ function VoiceManager:OnMessage(data, cb)
     end
 
     TriggerEvent(Event.SaltyChat_RadioTrafficStateChanged,
-      table.any(self.ActiveRadioTraffic, function(r)    -- Primary RX
+      table.any(self.ActiveRadioTraffic, function(r) -- Primary RX
         ---@cast r RadioTrafficState
         return r.IsPrimaryChannel and r.IsSending and r.ActiveRelay == null and r.Name ~= self.TeamSpeakName
       end),
       table.any(self.ActiveRadioTraffic, function(r)
         ---@cast r RadioTrafficState
         return r.Name == self.TeamSpeakName and r.IsPrimaryChannel and r.IsSending
-      end),   -- Primary TX
+      end), -- Primary TX
       table.any(self.ActiveRadioTraffic, function(r)
         ---@cast r RadioTrafficState
         return not r.IsPrimaryChannel and r.IsSending and r.ActiveRelay == null and r.Name ~= self.TeamSpeakName
-      end),   -- Secondary RX
+      end), -- Secondary RX
       table.any(self.ActiveRadioTraffic, function(r)
         ---@cast r RadioTrafficState
         return r.Name == self.TeamSpeakName and not r.IsPrimaryChannel and r.IsSending
-      end)   -- Secondary TX
+      end) -- Secondary TX
     );
   end
 end
@@ -1214,8 +1218,10 @@ RegisterNetEvent(Event.SaltyChat_RemoveClient, function(handle) vcManager:OnClie
 ---@param handle string
 function VoiceManager:OnClientRemove(handle)
   local serverId = tonumber(handle)
-  if type(serverId) ~= "number" then return print(
-    "[SaltyChat Lua] Error 'OnClientRemove': Could not get serverId. serverId is not a number") end
+  if type(serverId) ~= "number" then
+    return print(
+      "[SaltyChat Lua] Error 'OnClientRemove': Could not get serverId. serverId is not a number")
+  end
   ---@type VoiceClient
   local voiceClient = self._voiceClients[serverId]
 
@@ -1241,8 +1247,10 @@ function VoiceManager:OnEstablishCall(handle, teamSpeakName, position)
 end
 
 RegisterNetEvent(Event.SaltyChat_EstablishCall,
-  function(handle, teamSpeakName, position, direct, relays) vcManager:OnEstablishCallRelayed(handle, teamSpeakName,
-      position, direct, relays) end)
+  function(handle, teamSpeakName, position, direct, relays)
+    vcManager:OnEstablishCallRelayed(handle, teamSpeakName,
+      position, direct, relays)
+  end)
 ---@param handle string
 ---@param teamSpeakName string
 ---@param position table
@@ -1250,10 +1258,12 @@ RegisterNetEvent(Event.SaltyChat_EstablishCall,
 ---@param relays string[]
 function VoiceManager:OnEstablishCallRelayed(handle, teamSpeakName, position, direct, relays)
   local serverId = tonumber(handle)
-  if type(serverId) ~= "number" then return print(
-    "[SaltyChat Lua] Error 'OnEstablishCallRelayed': Could not get serverId. serverId is not a number") end
+  if type(serverId) ~= "number" then
+    return print(
+      "[SaltyChat Lua] Error 'OnEstablishCallRelayed': Could not get serverId. serverId is not a number")
+  end
   local voiceClient = self:GetOrCreateVoiceClient(serverId, teamSpeakName)
-  
+
   if voiceClient then
     if voiceClient.DistanceCulled then
       voiceClient.LastPosition = TSVector.new(position[1], position[2], position[3])
@@ -1310,11 +1320,14 @@ RegisterNetEvent(Event.SaltyChat_EndCall, function(handle) vcManager:OnEndCall(h
 ---@param handle string
 function VoiceManager:OnEndCall(handle)
   local serverId = tonumber(handle)
-  if type(serverId) ~= "number" then return print(
-    "[SaltyChat Lua] Error 'OnEndCall': Could not get serverId. serverId is not a number") end
+  if type(serverId) ~= "number" then
+    return print(
+      "[SaltyChat Lua] Error 'OnEndCall': Could not get serverId. serverId is not a number")
+  end
 
 
-  local voiceClient = self:GetOrCreateVoiceClient(serverId, Util.GetTeamSpeakName(serverId)) or self._phoneCallClients[serverId]
+  local voiceClient = self:GetOrCreateVoiceClient(serverId, Util.GetTeamSpeakName(serverId)) or
+  self._phoneCallClients[serverId]
   Logger:Debug("[OnEndCall]", serverId, voiceClient)
   if voiceClient then
     self:ExecutePluginCommand(PluginCommand.new(
@@ -1325,7 +1338,7 @@ function VoiceManager:OnEndCall(handle)
       )
     ))
 
-    if self._phoneCallClients[serverId] then 
+    if self._phoneCallClients[serverId] then
       self._phoneCallClients[serverId] = nil
     end
   end
@@ -1348,7 +1361,7 @@ function VoiceManager:OnSetRadioChannel(radioChannel, isPrimary)
 
     if IsStringNullOrEmpty(radioChannel) then
       self:RadioChannelSenderChangeHandler("global", State.SaltyChat_RadioChannelSender .. ":" ..
-      self.PrimaryRadioChannel, {}, 0, false)
+        self.PrimaryRadioChannel, {}, 0, false)
       self.PrimaryRadioChannel = nil
       self:PlaySound("leaveRadioChannel", false, "radio")
       self:ExecutePluginCommand(PluginCommand.new(
@@ -1391,7 +1404,7 @@ function VoiceManager:OnSetRadioChannel(radioChannel, isPrimary)
 
     if IsStringNullOrEmpty(radioChannel) then
       self:RadioChannelSenderChangeHandler("global", State.SaltyChat_RadioChannelSender ..
-      ":" .. self.SecondaryRadioChannel, {}, 0, false)
+        ":" .. self.SecondaryRadioChannel, {}, 0, false)
       self.SecondaryRadioChannel = nil
       self:PlaySound("leaveRadioChannel", false, "radio")
       self:ExecutePluginCommand(PluginCommand.new(

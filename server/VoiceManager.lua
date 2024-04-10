@@ -297,9 +297,9 @@ function VoiceManager:SetRadioTowers(towers)
   for _, tower in pairs(towers) do
     if type(tower) == "vector3" then
       table.insert(radioTowers, { tower.x, tower.y, tower.z })
-    elseif table.size(towers) == 3 then
+    elseif table.size(tower) == 3 then
       table.insert(radioTowers, { tower[1], tower[2], tower[3] })
-    elseif table.size(towers) == 4 then
+    elseif table.size(tower) == 4 then
       table.insert(radioTowers, { tower[1], tower[2], tower[3], tower[4] })
     end
   end
@@ -628,6 +628,8 @@ RegisterNetEvent(Event.SaltyChat_SetRadioSpeaker, function (isRadioSpeakerEnable
 end)
 --#endregion
 
+-- Register Commands if Debug is enabled, else return here
+if not Configuration.Debug then return end
 --#region Commands
 RegisterCommand("setalive", function (source, args, raw)
   local player = ServerPlayer.new(source)

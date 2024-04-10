@@ -719,8 +719,10 @@ function VoiceManager:ToggleVoiceRange()
 
   if self.Configuration.EnableVoiceRangeNotification then
     if self.RangeNotification ~= nil then
-      -- HIDE RANGE NOTIFICATION
-      TriggerEvent("voyage_hud:notify", "info", "Information", self.RangeNotification:gsub("{voicerange}", self:GetVoiceRange()), 3000)
+      -- Not tested yet
+      AddTextEntry('SaltyNotification', self.RangeNotification:gsub("{voicerange}", self:GetVoiceRange()))
+    	BeginTextCommandThefeedPost('SaltyNotification')
+      EndTextCommandThefeedPostTicker(false, true)
     end
 
     -- self.RangeNotification = (FiveM Native ShowNotification / Send Notification and string replace {voiceRange} with self:GetVoiceRange())

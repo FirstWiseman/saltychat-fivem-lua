@@ -1326,8 +1326,7 @@ function VoiceManager:OnEndCall(handle)
   end
 
 
-  local voiceClient = self:GetOrCreateVoiceClient(serverId, Util.GetTeamSpeakName(serverId)) or
-  self._phoneCallClients[serverId]
+  local voiceClient = self._phoneCallClients[serverId] or self:GetOrCreateVoiceClient(serverId, Util.GetTeamSpeakName(serverId))
   Logger:Debug("[OnEndCall]", serverId, voiceClient)
   if voiceClient then
     self:ExecutePluginCommand(PluginCommand.new(

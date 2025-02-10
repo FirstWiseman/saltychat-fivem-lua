@@ -6,7 +6,7 @@ An example implementation of Salty Chat for [FiveM](https://fivem.net/) OneSync 
   
 Join the [Discord](https://gaming.v10networks.com/Discord) of @v10networkscom and start with [Salty Chat](https://gaming.v10networks.com/SaltyChat)!
 
-Also checkout my [Discord](https://wise-scripts.vip/discord) for any questions about the Saltychat Lua Version or if you have found any Bugs.
+Also checkout my [Discord](https://wise-scripts.vip/discord) for any questions about the Saltychat Lua version.
 You can report bugs or make sugguestions via issues, or contribute via pull requests - we appreciate any contribution.
 
 # Setup Steps

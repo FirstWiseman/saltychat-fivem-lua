@@ -65,7 +65,7 @@ function VoiceManager.new()
 
   self.RadioTowers = nil
   self.RangeNotification = Configuration.VoiceRangeNotification
-  self.WebSocketAddress = "lh.v10.network:38088"
+  self.WebSocketAddress = "127.0.0.1:38088"
   self._voiceRange = 0.0
   self._cachedVoiceRange = 0.0
   self._canSendRadioTraffic = true

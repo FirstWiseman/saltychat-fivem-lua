@@ -152,7 +152,7 @@ end
 function VoiceManager:SetVoiceRange(range)
   self._voiceRange = range
   TriggerEvent(Event.SaltyChat_VoiceRangeChanged, range, (table.findIndex(Configuration.VoiceRanges, function(value)
-    return value == range
+    return value or 0.0 == range
   end)-1), #Configuration.VoiceRanges)
 
   LocalPlayer.state:set(State.SaltyChat_VoiceRange, self._voiceRange, true)

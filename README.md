@@ -1,3 +1,5 @@
+
+
 # Salty Chat in Lua for [FiveM](https://fivem.net/)
 
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FFirstWiseman%2Fsaltychat-fivem-lua&count_bg=%239B0000&title_bg=%23202020&icon=lua.svg&icon_color=%23E7E7E7&title=Lua+Lovers&edge_flat=false)](https://hits.seeyoufarm.com)
@@ -7,7 +9,7 @@ An example implementation of Salty Chat for [FiveM](https://fivem.net/) OneSync 
 Join the [Discord](https://gaming.v10networks.com/Discord) of @v10networkscom and start with [Salty Chat](https://gaming.v10networks.com/SaltyChat)!
 
 Also checkout my [Discord](https://wise-scripts.vip/discord) for any questions about the Saltychat Lua version.
-You can report bugs or make sugguestions via issues, or contribute via pull requests - we appreciate any contribution.
+You can report bugs or make suggestions via issues, or contribute via pull requests - we appreciate any contribution.
 
 # Setup Steps
 Before starting with the setup, make sure you have OneSync enabled and your server artifacts are up to date.
